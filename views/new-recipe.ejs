@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Receitas de Casa | Login</title>
+    <meta property="og:site_name" content="Receitas de casa" />
+    <meta property="og:type" content="website" />
+    <%- include('partials/head-imports.ejs') %>
+    <link rel="stylesheet" href="/css/new-recipe.css" />
+    <script type="text/javascript" src="/js/new-recipe.js" defer></script>
+  </head>
+  <body>
+    <%- include('partials/header.ejs') %> <%-
+    include('partials/main-menu.ejs')%>
+    <div class="main-wrapper">
+      <main>
+        <h2>Criar uma nova receita</h2>
+        <form id="form-new-recipe" autocomplete="off">
+          <div class="form-row">
+            <label for="author">Author</label>
+            <input type="text" id="author" value="<%= user.name %>" disabled />
+          </div>
+          <div class="form-row">
+            <label for="name">Nome da receita</label>
+            <input type="text" id="name" placeholder="ex.: Feijoada" required />
+          </div>
+          <div class="form-row">
+            <label for="description">Descrição</label>
+            <input
+              type="text"
+              id="description"
+              placeholder="ex.: Feijoada raiz"
+              required
+            />
+          </div>
+          <div class="form-row">
+            <label for="prepare-time">Tempo de preparo (em minutos)</label>
+            <input
+              type="number"
+              id="prepare-time"
+              placeholder="ex.: 5"
+              min="0"
+              value="0"
+              required
+            />
+          </div>
+          <div class="form-row">
+            <label for="preparation-instructions">Modo de preparo</label>
+            <textarea
+              required
+              id="preparation-instructions"
+              placeholder="Como fazer a receita..."
+              cols="30"
+              rows="10"
+            ></textarea>
+          </div>
+          <div class="form-row">
+            <label for="servings">Proções</label>
+            <input
+              type="number"
+              id="servings"
+              min="1"
+              value="1"
+              placeholder="ex.: 5"
+              required
+            />
+          </div>
+          <div class="form-row">
+            <label for="nutritional-value">Valor nutricional (kcal)</label>
+            <input
+              type="number"
+              id="nutritional-value"
+              placeholder="ex.: 500"
+              min="0"
+              value="0"
+              required
+            />
+          </div>
+          <div class="form-row">
+            <label for="cooking-method">Método de cozimento</label>
+            <input
+              type="text"
+              id="cooking-method"
+              placeholder="ex.: frito"
+              required
+            />
+          </div>
+          <div>
+            <div class="form-row categories-row">
+              <label for="category-input">Selecione categorias</label>
+              <input
+                name="category-input"
+                id="category-input"
+                placeholder="ex.: Bolos"
+              />
+              <ul
+                id="categories-results-container"
+                class="categories-results-container hide"
+              ></ul>
+            </div>
+            <div class="selected-categories-container-wrapper">
+              <h4>Categorias selecionadas:</h4>
+              <div id="selected-categories-container">
+                <span class="no-categories-selected-label"
+                  >Nenhuma categoria selecionada.</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="form-box">
+            <div class="form-row">
+              <div id="ingredients-container"></div>
+              <div id="add-ingredient-btn">
+                <span>Adicionar ingrediente</span>
+              </div>
+            </div>
+          </div>
+          <div class="form-box">
+            <div class="form-row" id="recipe-images-container">
+              <label class="select-recipe-img">
+                <span>
+                  Adicionar imagem
+                  <i class="lni lni-plus"></i>
+                </span>
+                <input type="file" name="images" id="select-img-input" />
+              </label>
+            </div>
+          </div>
+          <input type="submit" value="Criar receita" />
+        </form>
+        <div id="toast" class="toast"></div>
+      </main>
+      <aside>
+        <h3>Relacionados</h3>
+        <span>Nenhum conteúdo relacionado</span>
+      </aside>
+    </div>
+    <%- include('partials/footer.ejs') %>
+  </body>
+</html>

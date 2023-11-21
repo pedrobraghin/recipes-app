@@ -1,0 +1,28 @@
+footer {
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+  background-color: #252525;
+  color: #f4f4f4;
+  font-family: "Courier New", Courier, monospace;
+}
+
+footer h4 {
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+footer div {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+footer a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,48 @@
+<header>
+  <nav>
+    <a href="/">
+      <img
+        src="/imgs/logo.svg"
+        alt="Logo do site Receitas de Casa"
+        class="logo"
+      />
+    </a>
+    <ul>
+      <% var user; %> <% if (user){ %>
+      <li>
+        <b>Olá, <%= user.name %>!</b>
+      </li>
+      <li>
+        <a href="/">Início</a>
+      </li>
+      <li>
+        <a href="/sair">Sair</a>
+      </li>
+      <li>
+        <a href="/receitas/criar">Criar receita</a>
+      </li>
+      <% } else{ %>
+      <li>
+        <a href="/entrar">Entrar</a>
+      </li>
+      <li>
+        <a href="/cadastre-se">Cadastre-se</a>
+      </li>
+      <% } %>
+    </ul>
+  </nav>
+  <div class="search-box">
+    <div class="search-input-container">
+      <input
+        type="text"
+        id="search-input"
+        placeholder="Pesquise por uma receita..."
+        autocomplete="off"
+      />
+      <button onclick="searchTerm()">
+        <i class="lni lni-search-alt"></i>
+      </button>
+      <ul id="search-results-container" class="hide"></ul>
+    </div>
+  </div>
+</header>

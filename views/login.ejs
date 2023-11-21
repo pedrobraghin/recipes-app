@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Receitas de Casa | Login</title>
+    <meta property="og:site_name" content="Receitas de casa" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Pedro Braghin" />
+    <meta
+      name="description"
+      content="Autentique-se para criar e avalar receitas."
+    />
+    <meta
+      name="keywords"
+      content="receita, receitas caseiras, caseira, casa, receitas de casa, login, autenticação"
+    />
+    <%- include('partials/head-imports.ejs') %>
+    <script type="text/javascript" src="/js/login.js" defer></script>
+    <link rel="stylesheet" href="/css/login.css" />
+    <meta property="og:type" content="website" />
+  </head>
+  <body>
+    <%- include('partials/header.ejs') %> <%-
+    include('partials/main-menu.ejs')%>
+    <div class="main-wrapper">
+      <main>
+        <h2>Faça login para continuar</h2>
+        <div class="hide" id="error-container">
+          <span class="error-message"></span>
+        </div>
+        <form id="form-login" autocomplete="off">
+          <div class="form-row">
+            <label for="email-input">E-mail</label>
+            <input
+              type="email"
+              name="email"
+              id="email-input"
+              placeholder="ex.: joao@email.com"
+              required
+            />
+          </div>
+          <div class="form-row">
+            <label for="password-input">Senha</label>
+            <input
+              type="password"
+              name="password"
+              id="password-input"
+              placeholder="********"
+              required
+            />
+          </div>
+          <div class="form-row">
+            <label for="show-password-checkbox">
+              <input type="checkbox" id="show-password-checkbox" />
+              Exibir senha
+            </label>
+          </div>
+          <input type="submit" value="Entrar" id="submit-btn" />
+          <div class="register-tip">
+            <span> Não possui uma conta? </span>
+            <a href="cadastre-se">Cadatre-se.</a>
+          </div>
+        </form>
+      </main>
+      <aside>
+        <h3>Relacionados</h3>
+        <span>Nenhum conteúdo relacionado</span>
+      </aside>
+    </div>
+    <%- include('partials/footer.ejs') %>
+  </body>
+</html>

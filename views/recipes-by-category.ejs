@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%- include('partials/head-imports.ejs') %>
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Pedro Braghin">
+    <title>Receitas de Casa | <%= category.name %></title>
+    <meta property="og:site_name" content="Receitas de casa">
+    <meta name="description" content="Lista de receitas por categoria - <%= category.name %>"/>
+    <meta property="og:title" content="Receitas de Casa | <%= category.name %>" />
+    <link rel="stylesheet" href="/css/recipes-by-category.css" />
+    <meta property="og:type" content="website" />
+  </head>
+  <body>
+    <%- include('partials/header.ejs') %> <%-
+    include('partials/main-menu.ejs')%>
+    <div class="main-wrapper">
+      <main>
+        <h2><%= category.name %></h2>
+        <div class="recipes-container">
+          <% if (recipes.length === 0) {%>
+            <span>Nenhum receita encontrada.</span>
+          <% } %>
+          <% for(recipe of recipes) {%>
+            <div class="recipe-card">
+              
+              <div>
+                <h3>
+                  <a href="<%= "/receitas/" + recipe.id %>" class="recipe-name">
+                    <%= recipe.name %>
+                  </a>
+                </h3>
+                <div>
+                  <div>
+                    <span class="stars">
+                      <% const average = (ratings[recipe.id]?.average || 0).toFixed(1); %>
+                      <%= average %> 
+                      <% for(let i = 0; i < 5; i++) { %>
+                        <% if (i < Math.floor(average)) { %>
+                          <span class="filled-star">
+                            &#9733;
+                          </span>
+                        <% } else { %>
+                          <span class="empty-star">
+                            &#9734;
+                          </span>
+                        <% }  %>
+                      <% } %>
+                    </span>
+                  </div>
+                  <span>
+                    <span>
+                      <% const count = ratings[recipe.id]?.count ?? 0; %>
+                      <b>
+                        <span>Avaliações: </span> <%= count %>
+                      </b>
+                    </span>
+                  </span>
+                </div>
+                <div>
+                  <div class="author">
+                    <span>
+                      <b>Autor: </b>
+                    </span>
+                    <span class="name">
+                      <%= recipe.author.name %>
+                    </span>
+                  </div>
+                </div>
+                <div>
+                  <p>
+                    <b>
+                      Descrição: 
+                    </b>
+                    <%= recipe.description %>
+                  </p>
+                </div>
+              </div>
+
+              <img
+                src="<%= recipe.images[0]?.url %>"
+                alt="Imagem da receita <%= recipe.name %>"
+                class="recipe-image-preview"
+              />
+            </div>
+          <% } %>
+        </div>
+      </main>
+      <aside>
+        <h3>Relacionados</h3>
+        <div id="related-links">
+          <% if (relatedRecipes.length === 0) { %>
+            <span>Nenhuma receita disponível.</span>
+          <% } else { %>
+            <ul>
+              <% for(const recipe of relatedRecipes) {%>
+                <li>
+                  <a href="<%= "/receitas/" + recipe.id %>">
+                    <span class="recipe-name"><%= recipe.name %></span>
+                    <span class="recipe-description"><%= recipe.description %></span>
+                  </a>
+                </li>
+              <% } %>
+            </ul>
+          <% }%>
+        </div>
+      </aside>
+    </div>
+    <%- include('partials/footer.ejs') %>
+  </body>
+</html>

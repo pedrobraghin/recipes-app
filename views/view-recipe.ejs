@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%- include('partials/head-imports.ejs') %>
+    <title><%= recipe.name %></title>
+    <meta property="og:site_name" content="Receitas de casa">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Pedro Braghin">
+    <link rel="stylesheet" href="/css/view-recipe.css" />
+    <script src="/js/view-recipe.js" type="text/javascript" defer></script>
+    <meta property="og:title" content="<%= recipe.name %> ">
+    <meta name="description" content="Receita de <%= recipe.name %>"/>
+    <meta property="og:type" content="website">
+    <meta property="og:type" content="website" />
+  </head>
+  <body>
+    <%- include('partials/header.ejs') %> <%-
+    include('partials/main-menu.ejs')%>
+    <div class="main-wrapper">
+      <div id="main">
+        <div id="toast" class="toast"></div>
+        <main>
+          <div>
+            <b>Autor: </b>
+            <span><%= recipe.author.name%></span>
+          </div>
+          <div>
+            <h1><%= recipe.name %></h1>
+            <p class="recipe-description"><%= recipe.description %></p>
+          </div>
+          <div class="recipe-infos">
+            <span><b>Tempo de preparo:</b> <%= recipe.prepareTime %> minutos</span>
+            <span><b>Serve:</b> <%= recipe.servings %> pessoa(s)</span>
+            <span><b>Valor nutricional:</b> <%= recipe.nutritionalValue %> kcal</span>
+            <span><b>Método de cozimento:</b> <%= recipe.cookingMethod %></span>
+          </div>
+          <div>
+            <h3>Ingredientes</h3>
+            <ul class="ingredients-lists">
+              <% for(let i = 0; i < recipe.ingredients.length; i++) { %>
+                <li>
+                  <input type="checkbox" name="<%= "ingredient-" + i %>" id="<%= recipe.ingredients[i].id %>">
+                  <label for="<%= recipe.ingredients[i].id %>">
+                    <%= recipe.ingredients[i].quantity %>
+                    <%= recipe.ingredients[i].quantityUnity %>
+                    de 
+                    <%= recipe.ingredients[i].name %>
+                  </label>
+                </li>
+              <%} %>
+            </ul>
+          </div>
+          <div>
+            <h3>Modo de preparo</h3>
+            <pre><%= recipe.preparationInstructions %></pre>
+          </div>
+        </main>
+        <section class="images-section">
+          <h3>Galeria de imagens</h3>
+          <div id="recipe-images-container">
+            <div class="container">
+              <span>Nenhuma imagem para esta receita.</span>
+            </div>
+          </div>
+        </section>
+        <% if (user && !userReview) {%>
+          <section id="rating-section">
+            <form id="comment-form" autocomplete="off">
+              <div class="form-row">
+                <label for="comment" class="comment-label">Avaliação</label>
+                <input
+                  type="text"
+                  placeholder="Escreva algo..."
+                  id="comment"
+                  required
+                />
+              </div>
+              <div class="form-row">
+                <div class="rating" id="rating-stars">
+                  <input type="radio" id="star5" name="rating" value="5" />
+                  <label for="star5"></label>
+                  <input type="radio" id="star4" name="rating" value="4" />
+                  <label for="star4"></label>
+                  <input type="radio" id="star3" name="rating" value="3" />
+                  <label for="star3"></label>
+                  <input type="radio" id="star2" name="rating" value="2" />
+                  <label for="star2"></label>
+                  <input type="radio" id="star1" name="rating" value="1" />
+                  <label for="star1"></label>
+                </div>
+              </div>
+              <input type="submit" value="Avaliar" />
+            </form>
+          </section>
+        <% }%>
+        <section id="comments-section">
+          <h3>Comentários</h3>
+          <% if (user && userReview) { %>
+            <div class="user-review">
+              <div>
+                <div class="stars-container">
+                  <b>
+                    <span>Sua avaliação: </span>
+                  </b>
+                  <div>
+                    <% for(let i = 0; i < 5; i++) { %>
+                      <% if (i < userReview.rating) { %>
+                        <span class="filled-star">
+                          &#9733;
+                        </span>
+                      <% } else { %>
+                        <span class="empty-star">
+                          &#9734;
+                        </span>
+                      <% }  %>
+                    <% } %>
+                  </div>
+                </div>
+                <p><%= userReview.text %></p>
+              </div>
+            </div>
+          <% } %>
+          <div id="comments-container">
+            <% if (reviews.length === 0) { %>
+                <span>Nenhum comentário ainda. Seja o primeiro a avaliar a receita!</span>
+            <% } %>
+            <% for(let review of reviews) { %>
+              <div class="review-card">
+                <div class="stars-container">
+                  <% for(let i = 0; i < 5; i++) { %>
+                    <% if (i < review.rating) { %>
+                      <span class="filled-star">
+                        &#9733;
+                      </span>
+                    <% } else { %>
+                      <span class="empty-star">
+                        &#9734;
+                      </span>
+                    <% }  %>
+                  <% } %>
+                </div>
+
+                <div>
+                  <span>
+                    <b><%= review.user.name %></b>
+                  </span>
+                </div>
+
+                <p>
+                  <%= review.text %>
+                </p>
+
+              </div>
+            <% } %>
+          </div>
+        </section>
+      </div>
+      <aside>
+        <h3>Relacionados</h3>
+        <div id="related-links">
+          <% if (relatedRecipes.length === 0) { %>
+            <span>Nenhuma receita disponível.</span>
+          <% } else { %>
+            <ul>
+              <% for(const recipe of relatedRecipes) {%>
+                <li>
+                  <a href="<%= "/receitas/" + recipe.id %>">
+                    <span class="recipe-name"><%= recipe.name %></span>
+                    <span class="recipe-description"><%= recipe.description %></span>
+                  </a>
+                </li>
+              <% } %>
+            </ul>
+          <% } %>
+        </div>
+      </aside>
+    </div>
+    <%- include('partials/footer.ejs') %>
+  </body>
+</html>

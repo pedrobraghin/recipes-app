@@ -1,0 +1,209 @@
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+#main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  overflow: hidden;
+}
+
+.recipe-infos {
+  display: flex;
+  flex-direction: column;
+}
+
+p {
+  text-align: justify;
+}
+
+.comment-label {
+  font-size: 1rem;
+}
+
+.rating {
+  display: inline-block;
+  width: max-content;
+}
+
+.rating input {
+  display: none;
+}
+
+.rating label {
+  float: right;
+  cursor: pointer;
+  color: #aaa;
+  font-size: 2rem;
+}
+
+.rating label:before {
+  content: "\2605";
+}
+
+.rating input:checked ~ label:before,
+.rating label:hover ~ label:before {
+  content: "\2605";
+  color: #f8d64e;
+}
+
+.rating label:hover {
+  content: "\2605";
+  color: #f8d64e;
+}
+
+#recipe-images-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  margin: 0 auto;
+}
+
+#recipe-images-container .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#recipe-images-container img {
+  object-fit: contain;
+  min-width: 100%;
+  max-height: 25rem;
+}
+
+.images-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.images-section h3 {
+  text-align: center;
+}
+
+.carousel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.buttons-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.buttons-container button {
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+  outline: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.2rem;
+  border: 1px solid rgba(200, 200, 200, 0.6);
+}
+
+.buttons-container button:hover {
+  background-color: var(--main-color);
+  color: white;
+}
+
+.image-container {
+  height: 25rem;
+}
+
+.filled-star {
+  color: #f8d64e;
+  font-size: 1.5rem;
+}
+
+.empty-star {
+  color: #aaa;
+  font-size: 1.5rem;
+}
+
+.review-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  border-radius: 0.2rem;
+  border: 1px solid rgba(200, 200, 200, 0.6);
+  padding: 1rem;
+}
+
+#comments-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#comments-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.user-review .stars-container {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.ingredients-lists label {
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: normal;
+}
+
+aside ul {
+  list-style-type: none;
+  margin: 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+aside ul li {
+  border: 0.5px solid rgba(200, 200, 200, 0.6);
+  border-radius: 0.5rem;
+  padding: 0.6rem;
+  transition: background-color 200ms ease-in-out;
+}
+
+aside ul li:hover {
+  background-color: #f4f4f4;
+}
+
+aside ul li a {
+  display: flex;
+  flex-direction: column;
+}
+
+aside ul li a:hover {
+  text-decoration: none;
+}
+
+aside ul li a .recipe-name {
+  font-weight: bold;
+}
+
+aside ul li a .recipe-description {
+  font-size: 0.8rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  text-align: justify;
+}
+
+pre {
+  white-space: pre-wrap;
+  text-align: justify;
+  font-size: 1rem;
+  font-family: inherit;
+  margin: 0.5rem 0;
+}

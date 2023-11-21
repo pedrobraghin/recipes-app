@@ -1,0 +1,135 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scrollbar-width: auto;
+  scrollbar-color: #919191 #ffffff;
+}
+
+:root {
+  --main-color: #ea4e35;
+  --header-height: 112px;
+}
+
+body {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  opacity: 80%;
+}
+
+*::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+*::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #919191;
+  border-radius: 10px;
+  border: 3px solid #ffffff;
+}
+
+.main-wrapper {
+  display: flex;
+  padding: 1rem 2rem;
+  gap: 1rem;
+}
+
+main,
+#main {
+  flex: 6;
+  min-height: calc(100vh - var(--header-height));
+}
+
+.hide {
+  display: none;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin: 0.5rem 0;
+  width: 100%;
+}
+
+form input,
+textarea {
+  outline: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.2rem;
+  border: 1px solid rgba(200, 200, 200, 0.6);
+}
+
+textarea {
+  resize: none;
+}
+
+form input:focus,
+textarea:focus {
+  border: 1px solid var(--main-color);
+}
+
+form input[type="submit"] {
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+}
+
+form input[type="submit"]:hover {
+  background-color: var(--main-color);
+  color: white;
+}
+
+.error-message {
+  color: #ea4e35;
+  font-size: small;
+  font-weight: bold;
+}
+
+.form-box {
+  display: flex;
+  gap: 1rem;
+}
+
+label {
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+aside a {
+  font-size: 0.8rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+aside a:hover {
+  text-decoration: underline;
+}
+
+.toast {
+  position: fixed;
+  bottom: 1.2rem;
+  right: -100%;
+  background-color: #333;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 0.4rem;
+  transition: right 0.5s ease-in-out;
+}
+
+.toast span {
+  font-size: 0.8rem;
+}

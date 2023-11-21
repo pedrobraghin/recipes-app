@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Receitas de Casa | Registre-se</title>
+    <meta property="og:site_name" content="Receitas de casa" />
+    <meta property="og:title" content="Receitas de Casa | Registre-se" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Pedro Braghin" />
+    <meta property="og:type" content="website" />
+    <%- include('partials/head-imports.ejs') %>
+    <meta
+      name="keywords"
+      content="receita, receitas caseiras, caseira, casa, receitas de casa, cadastro, registrar, registre-se, autenticação"
+    />
+    <meta
+      name="description"
+      content="Autentique-se para criar e avalar receitas."
+    />
+    <link rel="stylesheet" href="/css/register.css" />
+    <script type="text/javascript" src="/js/register.js" defer></script>
+  </head>
+  <body>
+    <%- include('partials/header.ejs') %> <%-
+    include('partials/main-menu.ejs')%>
+    <div class="main-wrapper">
+      <main>
+        <h2>Crie uma conta para publicar suas receitas</h2>
+        <form id="form-register" autocomplete="off">
+          <div class="form-box">
+            <div class="form-row">
+              <label for="name-input">Nome completo</label>
+              <input
+                type="text"
+                name="name"
+                id="name-input"
+                placeholder="ex.: João da Silva"
+                required
+              />
+              <div class="error-container hide" id="name-error">
+                <span class="error-message"></span>
+              </div>
+            </div>
+            <div class="form-row">
+              <label for="birth-date-input">Data de nascimento</label>
+              <input
+                type="date"
+                name="birth-date"
+                id="birth-date-input"
+                required
+              />
+              <div class="error-container hide" id="birth-date-error">
+                <span class="error-message"></span>
+              </div>
+            </div>
+          </div>
+          <div class="form-box">
+            <div class="form-row">
+              <label for="state-select">Estado</label>
+              <select
+                name="state"
+                id="state-select"
+                aria-placeholder="Selecione um estado"
+                required
+              ></select>
+            </div>
+            <div class="form-row">
+              <label for="city-select">Cidade</label>
+              <select
+                name="city"
+                id="city-select"
+                aria-placeholder="Selecione uma cidade"
+                required
+              ></select>
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="phone-input">Telefone</label>
+            <input
+              type="tel"
+              name="phone"
+              id="phone-input"
+              placeholder="ex.: 18991234567"
+              required
+            />
+            <div class="error-container hide" id="phone-error">
+              <span class="error-message"></span>
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="email-input">E-mail</label>
+            <input
+              type="email"
+              name="email"
+              id="email-input"
+              placeholder="ex.: joao@email.com"
+              required
+            />
+            <div class="error-container hide" id="email-error">
+              <span class="error-message"></span>
+            </div>
+          </div>
+          <div class="form-box">
+            <div class="form-row">
+              <label for="password-input">Senha</label>
+              <input
+                type="password"
+                name="password"
+                id="password-input"
+                placeholder="********"
+                required
+                minlength="8"
+              />
+            </div>
+            <div class="form-row">
+              <label for="password-confirm-input">Confirme a senha</label>
+              <input
+                type="password"
+                name="password-confirm"
+                id="password-confirm-input"
+                placeholder="********"
+                required
+                minlength="8"
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="error-container hide" id="password-error">
+              <span class="error-message"></span>
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="show-password-checkbox">
+              <input type="checkbox" id="show-password-checkbox" />
+              Exibir senha
+            </label>
+          </div>
+          <input type="submit" value="Cadastrar" />
+          <div class="login-tip">
+            <span> Já possui uma conta? </span>
+            <a href="entrar">Faça login.</a>
+          </div>
+        </form>
+      </main>
+      <aside>
+        <h3>Relacionados</h3>
+        <span>Nenhum conteúdo relacionado</span>
+      </aside>
+    </div>
+    <%- include('partials/footer.ejs') %>
+  </body>
+</html>

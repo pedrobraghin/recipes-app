@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Receitas de Casa | Erro</title>
+    <meta property="og:site_name" content="Receitas de casa" />
+    <meta name="robots" content="nofollow" />
+    <meta property="og:type" content="website" />
+    <%- include('partials/head-imports.ejs') %>
+    <link rel="stylesheet" href="css/home.css" />
+    <script type="text/javascript" src="/js/home.js" defer></script>
+  </head>
+  <body>
+    <%- include('partials/header.ejs') %> <%-
+    include('partials/main-menu.ejs')%>
+    <div class="main-wrapper">
+      <main>
+        <h2>Um erro inesperado aconteceu.</h2>
+        <span>Recarregue a página ou tente novamente mais tarde.</span>
+      </main>
+      <aside>
+        <h3>Relacionados</h3>
+        <span>Nenhum conteúdo relacionado</span>
+      </aside>
+    </div>
+    <%- include('partials/footer.ejs') %>
+  </body>
+</html>
